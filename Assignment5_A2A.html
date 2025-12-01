@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!unzip multi-agent-customer-service-colab.zip</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Archive:  multi-agent-customer-service-colab.zip
+   creating: multi-agent-customer-service-colab/
+  inflating: multi-agent-customer-service-colab/README copy.md  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._README copy.md  
+   creating: multi-agent-customer-service-colab/__pycache__ copy/
+  inflating: __MACOSX/multi-agent-customer-service-colab/.___pycache__ copy  
+  inflating: multi-agent-customer-service-colab/.DS_Store  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._.DS_Store  
+   creating: multi-agent-customer-service-colab/data copy/
+  inflating: __MACOSX/multi-agent-customer-service-colab/._data copy  
+  inflating: multi-agent-customer-service-colab/mcp_server copy.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._mcp_server copy.py  
+  inflating: multi-agent-customer-service-colab/multi_agent_customer_service copy.ipynb  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._multi_agent_customer_service copy.ipynb  
+  inflating: multi-agent-customer-service-colab/database_setup copy.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._database_setup copy.py  
+  inflating: multi-agent-customer-service-colab/db copy.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._db copy.py  
+  inflating: multi-agent-customer-service-colab/run_demo copy.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._run_demo copy.py  
+   creating: multi-agent-customer-service-colab/agents copy/
+  inflating: __MACOSX/multi-agent-customer-service-colab/._agents copy  
+  inflating: multi-agent-customer-service-colab/requirements copy.txt  
+  inflating: __MACOSX/multi-agent-customer-service-colab/._requirements copy.txt  
+  inflating: multi-agent-customer-service-colab/__pycache__ copy/database_setup.cpython-39.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/__pycache__ copy/._database_setup.cpython-39.pyc  
+  inflating: multi-agent-customer-service-colab/__pycache__ copy/db.cpython-314.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/__pycache__ copy/._db.cpython-314.pyc  
+  inflating: multi-agent-customer-service-colab/__pycache__ copy/database_setup.cpython-314.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/__pycache__ copy/._database_setup.cpython-314.pyc  
+  inflating: multi-agent-customer-service-colab/__pycache__ copy/db.cpython-39.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/__pycache__ copy/._db.cpython-39.pyc  
+  inflating: multi-agent-customer-service-colab/data copy/customer_service.db  
+  inflating: __MACOSX/multi-agent-customer-service-colab/data copy/._customer_service.db  
+ extracting: multi-agent-customer-service-colab/data copy/.gitkeep  
+  inflating: __MACOSX/multi-agent-customer-service-colab/data copy/._.gitkeep  
+  inflating: multi-agent-customer-service-colab/agents copy/customer_data_agent.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/._customer_data_agent.py  
+   creating: multi-agent-customer-service-colab/agents copy/__pycache__/
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/.___pycache__  
+  inflating: multi-agent-customer-service-colab/agents copy/router_agent.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/._router_agent.py  
+  inflating: multi-agent-customer-service-colab/agents copy/base.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/._base.py  
+  inflating: multi-agent-customer-service-colab/agents copy/support_agent.py  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/._support_agent.py  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/support_agent.cpython-314.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._support_agent.cpython-314.pyc  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/support_agent.cpython-39.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._support_agent.cpython-39.pyc  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/base.cpython-314.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._base.cpython-314.pyc  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/router_agent.cpython-39.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._router_agent.cpython-39.pyc  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/router_agent.cpython-314.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._router_agent.cpython-314.pyc  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/customer_data_agent.cpython-39.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._customer_data_agent.cpython-39.pyc  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/base.cpython-39.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._base.cpython-39.pyc  
+  inflating: multi-agent-customer-service-colab/agents copy/__pycache__/customer_data_agent.cpython-314.pyc  
+  inflating: __MACOSX/multi-agent-customer-service-colab/agents copy/__pycache__/._customer_data_agent.cpython-314.pyc  
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>%cd /content/multi-agent-customer-service-colab</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">/content/multi-agent-customer-service-colab
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [8]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>ls</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">[0m[01;34magents[0m/            mcp_server.py                       requirements.txt
+[01;34mdata[0m/              multi_agent_customer_service.ipynb  run_demo.py
+database_setup.py  [01;34m__pycache__[0m/
+db.py              README.md
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [9]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install -r requirements.txt</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: mcp&gt;=0.1.0 in /usr/local/lib/python3.12/dist-packages (from -r requirements.txt (line 1)) (1.22.0)
+Requirement already satisfied: anyio&gt;=4.5 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (4.11.0)
+Requirement already satisfied: httpx-sse&gt;=0.4 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.4.3)
+Requirement already satisfied: httpx&gt;=0.27.1 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.28.1)
+Requirement already satisfied: jsonschema&gt;=4.20.0 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (4.25.1)
+Requirement already satisfied: pydantic-settings&gt;=2.5.2 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2.12.0)
+Requirement already satisfied: pydantic&lt;3.0.0,&gt;=2.11.0 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2.12.3)
+Requirement already satisfied: pyjwt&gt;=2.10.1 in /usr/local/lib/python3.12/dist-packages (from pyjwt[crypto]&gt;=2.10.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2.10.1)
+Requirement already satisfied: python-multipart&gt;=0.0.9 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.0.20)
+Requirement already satisfied: sse-starlette&gt;=1.6.1 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (3.0.3)
+Requirement already satisfied: starlette&gt;=0.27 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.48.0)
+Requirement already satisfied: typing-extensions&gt;=4.9.0 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (4.15.0)
+Requirement already satisfied: typing-inspection&gt;=0.4.1 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.4.2)
+Requirement already satisfied: uvicorn&gt;=0.31.1 in /usr/local/lib/python3.12/dist-packages (from mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.38.0)
+Requirement already satisfied: idna&gt;=2.8 in /usr/local/lib/python3.12/dist-packages (from anyio&gt;=4.5-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (3.11)
+Requirement already satisfied: sniffio&gt;=1.1 in /usr/local/lib/python3.12/dist-packages (from anyio&gt;=4.5-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (1.3.1)
+Requirement already satisfied: certifi in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.27.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2025.11.12)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.27.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (1.0.9)
+Requirement already satisfied: h11&gt;=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-&gt;httpx&gt;=0.27.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.16.0)
+Requirement already satisfied: attrs&gt;=22.2.0 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=4.20.0-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (25.4.0)
+Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=4.20.0-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2025.9.1)
+Requirement already satisfied: referencing&gt;=0.28.4 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=4.20.0-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.37.0)
+Requirement already satisfied: rpds-py&gt;=0.7.1 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=4.20.0-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.29.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.11.0-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.11.0-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2.41.4)
+Requirement already satisfied: python-dotenv&gt;=0.21.0 in /usr/local/lib/python3.12/dist-packages (from pydantic-settings&gt;=2.5.2-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (1.2.1)
+Requirement already satisfied: cryptography&gt;=3.4.0 in /usr/local/lib/python3.12/dist-packages (from pyjwt[crypto]&gt;=2.10.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (43.0.3)
+Requirement already satisfied: click&gt;=7.0 in /usr/local/lib/python3.12/dist-packages (from uvicorn&gt;=0.31.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (8.3.1)
+Requirement already satisfied: cffi&gt;=1.12 in /usr/local/lib/python3.12/dist-packages (from cryptography&gt;=3.4.0-&gt;pyjwt[crypto]&gt;=2.10.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2.0.0)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.12/dist-packages (from cffi&gt;=1.12-&gt;cryptography&gt;=3.4.0-&gt;pyjwt[crypto]&gt;=2.10.1-&gt;mcp&gt;=0.1.0-&gt;-r requirements.txt (line 1)) (2.23)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [10]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!python database_setup.py</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Database initialized with 6 customers and 6 tickets at /content/multi-agent-customer-service-colab/data/customer_service.db
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [11]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!python run_demo.py</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Database initialized with 6 customers and 6 tickets at /content/multi-agent-customer-service-colab/data/customer_service.db
+
+=== Simple Query ===
+User: Get customer information for ID 5
+Assistant: Customer 5: Elena Novak (active). Email: elena@example.com, Phone: 555-5000.
+
+=== Coordinated Query ===
+User: I'm customer 12345 and need help upgrading my account
+Assistant: Thanks Pat Premium! I can upgrade your account now. I'll apply premium benefits and send a confirmation email shortly.
+
+=== Complex Query ===
+User: Show me all active customers who have open tickets
+Assistant: Open tickets for target customers:
+- Ticket 3 for customer 4: Refund pending for last order (priority=medium, status=in_progress)
+- Ticket 5 for customer 12345: Upgrade request to premium plus (priority=medium, status=open)
+- Ticket 2 for customer 3: App keeps crashing on login (priority=high, status=open)
+- Ticket 4 for customer 5: Urgent: Payment failed and account locked (priority=high, status=open)
+- Ticket 6 for customer 12345: Billing inquiry: duplicate charge detected (priority=high, status=open)
+
+=== Escalation ===
+User: I've been charged twice, please refund immediately!
+Assistant: Hi Pat Premium, I see the issue you reported: I've been charged twice, please refund immediately!. I will secure your account and process a refund if needed. I'll open a billing ticket and alert the finance team.
+
+=== Multi-Intent ===
+User: Update my email to new@email.com and show my ticket history
+Assistant: Elena Novak, here is your ticket history:
+- [open] Urgent: Payment failed and account locked (priority=high, id=4)
+
+=== Multi-Step Report ===
+User: What's the status of all high-priority tickets for premium customers?
+Assistant: High-priority open tickets:
+- Ticket 2 for customer 3: App keeps crashing on login (priority=high, status=open)
+- Ticket 4 for customer 5: Urgent: Payment failed and account locked (priority=high, status=open)
+- Ticket 6 for customer 12345: Billing inquiry: duplicate charge detected (priority=high, status=open)
+
+=== Transcript (Agent-to-Agent messages) ===
+[router-agent -&gt; user] customer_info Received query: Get customer information for ID 5
+[router-agent -&gt; customer-data-agent] get_customer Fetch details for customer 5 | payload={'customer_id': 5}
+[customer-data-agent -&gt; router-agent] get_customer Customer 5 fetched | payload={'customer': {'id': 5, 'name': 'Elena Novak', 'email': 'elena@example.com', 'phone': '555-5000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}}
+[router-agent -&gt; user] upgrade Received query: I'm customer 12345 and need help upgrading my account
+[router-agent -&gt; customer-data-agent] get_customer Need data for upgrade for customer 12345 | payload={'customer_id': 12345}
+[customer-data-agent -&gt; router-agent] get_customer Customer 12345 fetched | payload={'customer': {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}}
+[router-agent -&gt; support-agent] upgrade Provide upgrade guidance | payload={'customer': {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}}
+[support-agent -&gt; router-agent] upgrade Thanks Pat Premium! I can upgrade your account now. I'll apply premium benefits and send a confirmation email shortly. | payload={'resolution': 'upgrade_guidance'}
+[router-agent -&gt; user] active_with_open_tickets Received query: Show me all active customers who have open tickets
+[customer-data-agent -&gt; router-agent] list_customers Listed 5 customers | payload={'customers': [{'id': 1, 'name': 'Alice Carter', 'email': 'alice@example.com', 'phone': '555-1000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 3, 'name': 'Carla Gomez', 'email': 'carla@example.com', 'phone': '555-3000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 4, 'name': 'Derek Yang', 'email': 'derek@example.com', 'phone': '555-4000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 5, 'name': 'Elena Novak', 'email': 'elena@example.com', 'phone': '555-5000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}]}
+[router-agent -&gt; support-agent] ticket_report Combine customer and ticket filters | payload={'tickets': [{'id': 3, 'customer_id': 4, 'issue': 'Refund pending for last order', 'status': 'in_progress', 'priority': 'medium', 'created_at': '2025-12-01 17:39:07'}, {'id': 5, 'customer_id': 12345, 'issue': 'Upgrade request to premium plus', 'status': 'open', 'priority': 'medium', 'created_at': '2025-12-01 17:39:07'}, {'id': 2, 'customer_id': 3, 'issue': 'App keeps crashing on login', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}, {'id': 4, 'customer_id': 5, 'issue': 'Urgent: Payment failed and account locked', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}, {'id': 6, 'customer_id': 12345, 'issue': 'Billing inquiry: duplicate charge detected', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}], 'customers': [{'id': 3, 'name': 'Carla Gomez', 'email': 'carla@example.com', 'phone': '555-3000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 4, 'name': 'Derek Yang', 'email': 'derek@example.com', 'phone': '555-4000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 5, 'name': 'Elena Novak', 'email': 'elena@example.com', 'phone': '555-5000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}]}
+[support-agent -&gt; router-agent] ticket_report Open tickets for target customers:
+- Ticket 3 for customer 4: Refund pending for last order (priority=medium, status=in_progress)
+- Ticket 5 for customer 12345: Upgrade request to premium plus (priority=medium, status=open)
+- Ticket 2 for customer 3: App keeps crashing on login (priority=high, status=open)
+- Ticket 4 for customer 5: Urgent: Payment failed and account locked (priority=high, status=open)
+- Ticket 6 for customer 12345: Billing inquiry: duplicate charge detected (priority=high, status=open) | payload={'resolution': 'report_shared'}
+[router-agent -&gt; user] cancel_and_billing Received query: I've been charged twice, please refund immediately!
+[router-agent -&gt; support-agent] billing_help Can you handle cancellation plus billing? | payload={'issue': "I've been charged twice, please refund immediately!"}
+[support-agent -&gt; router-agent] billing_help I see the issue you reported: I've been charged twice, please refund immediately!. I will secure your account and process a refund if needed. I'll open a billing ticket and alert the finance team. | payload={'resolution': 'billing_investigation'}
+[router-agent -&gt; customer-data-agent] get_customer Need billing context for cancellation and double charge | payload={'customer_id': 12345}
+[customer-data-agent -&gt; router-agent] get_customer Customer 12345 fetched | payload={'customer': {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}}
+[router-agent -&gt; support-agent] billing_help Provide coordinated cancellation + billing resolution | payload={'customer': {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, 'issue': "I've been charged twice, please refund immediately!"}
+[support-agent -&gt; router-agent] billing_help Hi Pat Premium, I see the issue you reported: I've been charged twice, please refund immediately!. I will secure your account and process a refund if needed. I'll open a billing ticket and alert the finance team. | payload={'resolution': 'billing_investigation'}
+[router-agent -&gt; user] update_email_and_history Received query: Update my email to new@email.com and show my ticket history
+[router-agent -&gt; customer-data-agent] update_customer Update email | payload={'customer_id': 5, 'data': {'email': 'new@email.com'}}
+[customer-data-agent -&gt; router-agent] update_customer Customer 5 updated | payload={'customer': {'id': 5, 'name': 'Elena Novak', 'email': 'new@email.com', 'phone': '555-5000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}}
+[router-agent -&gt; customer-data-agent] get_history Get history | payload={'customer_id': 5}
+[customer-data-agent -&gt; router-agent] get_history Fetched history for customer 5 | payload={'history': [{'id': 4, 'customer_id': 5, 'issue': 'Urgent: Payment failed and account locked', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}]}
+[router-agent -&gt; support-agent] history Share updated profile plus history | payload={'customer': {'id': 5, 'name': 'Elena Novak', 'email': 'new@email.com', 'phone': '555-5000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, 'history': [{'id': 4, 'customer_id': 5, 'issue': 'Urgent: Payment failed and account locked', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}]}
+[support-agent -&gt; router-agent] history Elena Novak, here is your ticket history:
+- [open] Urgent: Payment failed and account locked (priority=high, id=4) | payload={'resolution': 'history_shared'}
+[router-agent -&gt; user] high_priority_report Received query: What's the status of all high-priority tickets for premium customers?
+[router-agent -&gt; customer-data-agent] list_customers Fetch premium customers (modeled as active for demo) | payload={'status': 'active', 'limit': 100}
+[customer-data-agent -&gt; router-agent] list_customers Listed 5 customers | payload={'customers': [{'id': 1, 'name': 'Alice Carter', 'email': 'alice@example.com', 'phone': '555-1000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 3, 'name': 'Carla Gomez', 'email': 'carla@example.com', 'phone': '555-3000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 4, 'name': 'Derek Yang', 'email': 'derek@example.com', 'phone': '555-4000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 5, 'name': 'Elena Novak', 'email': 'new@email.com', 'phone': '555-5000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}]}
+[router-agent -&gt; support-agent] ticket_report Format high-priority ticket report | payload={'tickets': [{'id': 2, 'customer_id': 3, 'issue': 'App keeps crashing on login', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}, {'id': 4, 'customer_id': 5, 'issue': 'Urgent: Payment failed and account locked', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}, {'id': 6, 'customer_id': 12345, 'issue': 'Billing inquiry: duplicate charge detected', 'status': 'open', 'priority': 'high', 'created_at': '2025-12-01 17:39:07'}], 'customers': [{'id': 1, 'name': 'Alice Carter', 'email': 'alice@example.com', 'phone': '555-1000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 3, 'name': 'Carla Gomez', 'email': 'carla@example.com', 'phone': '555-3000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 4, 'name': 'Derek Yang', 'email': 'derek@example.com', 'phone': '555-4000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 5, 'name': 'Elena Novak', 'email': 'new@email.com', 'phone': '555-5000', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}, {'id': 12345, 'name': 'Pat Premium', 'email': 'pat.premium@example.com', 'phone': '555-1234', 'status': 'active', 'created_at': '2025-12-01 17:39:07', 'updated_at': '2025-12-01 17:39:07'}]}
+[support-agent -&gt; router-agent] ticket_report High-priority open tickets:
+- Ticket 2 for customer 3: App keeps crashing on login (priority=high, status=open)
+- Ticket 4 for customer 5: Urgent: Payment failed and account locked (priority=high, status=open)
+- Ticket 6 for customer 12345: Billing inquiry: duplicate charge detected (priority=high, status=open) | payload={'resolution': 'report_shared'}
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
